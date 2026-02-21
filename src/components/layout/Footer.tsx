@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="text-xs text-gray-400 space-y-1">
             <p>{COMPANY.address}</p>
             <p>대표번호: {COMPANY.phone} | 팩스: {COMPANY.fax}</p>
-            <p>평일 09:00 ~ 18:00 (토·일·공휴일 휴무)</p>
+            {/*<p>평일 09:00 ~ 18:00 (토·일·공휴일 휴무)</p>*/}
           </div>
         </div>
         <div className="mt-8 pt-6 border-t border-gray-200">

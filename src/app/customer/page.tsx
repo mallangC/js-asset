@@ -23,7 +23,6 @@ export default async function CustomerPage() {
         <div>
           <p className="text-xs text-gray-400 tracking-widest uppercase mb-2">Customer Center</p>
           <h1 className="text-3xl font-bold text-gray-900">고객센터</h1>
-          <p className="mt-2 text-sm text-gray-500">자주하는 질문</p>
           <div className="mt-4 h-px w-12 bg-gray-900" />
         </div>
 
@@ -37,6 +36,7 @@ export default async function CustomerPage() {
         )}
       </div>
 
+      <p className="mb-6 text-lg text-gray-500">자주하는 질문</p>
       <FaqAccordion faqs={faqs ?? []} isAdmin={isAdmin} />
     </div>
   );

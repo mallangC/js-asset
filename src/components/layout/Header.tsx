@@ -11,10 +11,10 @@ export default async function Header() {
 
   const navLinks = [
     { href: "/company", label: "회사소개" },
-    { href: "/directions", label: "오시는 길" },
     { href: "/notices", label: "공지사항" },
-    { href: "/customer", label: "고객센터" },
     { href: "/bond-notices", label: "채권양도 예정공지" },
+    { href: "/customer", label: "고객센터" },
+    { href: "/directions", label: "오시는 길" },
   ];
 
   return (
