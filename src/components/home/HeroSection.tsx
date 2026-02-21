@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { COMPANY } from "@/lib/company";
 
 export default function HeroSection() {
   return (
@@ -16,10 +17,10 @@ export default function HeroSection() {
 
       <div className="relative z-10 text-center px-6">
         <p className="text-gray-300 text-sm tracking-widest uppercase mb-4">
-          SJ Asset Finance
+          {COMPANY.nameEn}
         </p>
         <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">
-          에스제이에셋대부(주)
+          {COMPANY.name}
         </h1>
         <p className="mt-6 text-gray-300 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
           신뢰와 전문성을 바탕으로 고객의 자산을 지켜드립니다.

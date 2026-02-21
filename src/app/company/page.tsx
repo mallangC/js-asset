@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
+import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: "회사소개 | 에스제이에셋대부(주)",
+  title: `회사소개 | ${COMPANY.name}`,
 };
 
 const items = [
   {
     label: "설립 연도",
-    value: "2015년",
+    value: `${COMPANY.foundedYear}년`,
   },
   {
-    label: "등록번호",
-    value: "대부업 제00-00-0000호",
+    label: "주요사업",
+    value: COMPANY.businessType,
   },
   {
     label: "대표자",
-    value: "홍길동",
+    value: COMPANY.ceo,
   },
   {
     label: "소재지",
-    value: "서울특별시 강남구 테헤란로 152, 4층",
+    value: COMPANY.address,
   },
 ];
 
@@ -53,22 +54,12 @@ export default function CompanyPage() {
         <h2 className="text-lg font-semibold text-gray-800 mb-4">대표 인사말</h2>
         <div className="bg-gray-50 rounded-lg p-8 border border-gray-100">
           <p className="text-gray-600 leading-8 text-sm">
-            에스제이에셋대부(주)를 방문해 주신 여러분께 진심으로 감사드립니다.
-            <br />
-            <br />
-            저희 에스제이에셋대부는 2015년 설립 이래 고객 여러분의 금융 애로 사항을 해결하기
-            위해 끊임없이 노력해 왔습니다. 급변하는 금융 환경 속에서도 고객의 편에서 생각하고,
-            합리적인 금리와 유연한 상환 조건으로 실질적인 도움을 드리는 것이 저희의 사명입니다.
-            <br />
-            <br />
-            투명하고 공정한 대출 관행을 바탕으로, 여러분의 소중한 자금 계획을 함께 설계해
-            드리겠습니다. 앞으로도 더욱 신뢰받는 기업이 되도록 최선을 다하겠습니다.
-            <br />
-            <br />
-            감사합니다.
+            에스제이에셋대부 주식회사는 대부업법 등 관계법령을 준수하면서 채권업무를 수행하고 있으며,
+            <br/>
+            또한 채무자의 신용회복을 돕기 위한 채무조정(신용회복, 개인회생, 파산) 에도 적극적으로 협조하고 있습니다.
           </p>
           <p className="mt-6 text-sm font-medium text-gray-800 text-right">
-            에스제이에셋대부(주) 대표 홍길동
+            {COMPANY.name} 대표 {COMPANY.ceo}
           </p>
         </div>
       </section>

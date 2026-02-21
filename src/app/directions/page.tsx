@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { COMPANY } from "@/lib/company";
 
-const ADDRESS = "서울특별시 강남구 테헤란로 152";
-const LAT = 37.500713;
-const LNG = 127.036427;
+const ADDRESS = COMPANY.address;
+const LAT = COMPANY.mapLat;
+const LNG = COMPANY.mapLng;
 
 declare global {
   interface Window {
@@ -72,16 +73,16 @@ export default function DirectionsPage() {
           <dl className="space-y-3 text-sm">
             <div className="flex gap-3">
               <dt className="text-gray-400 shrink-0 w-16">도로명</dt>
-              <dd className="text-gray-700">{ADDRESS}, 4층</dd>
+              <dd className="text-gray-700">{ADDRESS}</dd>
             </div>
             <div className="flex gap-3">
               <dt className="text-gray-400 shrink-0 w-16">전화</dt>
-              <dd className="text-gray-700">02-0000-0000</dd>
+              <dd className="text-gray-700">{COMPANY.phone}</dd>
             </div>
-            <div className="flex gap-3">
-              <dt className="text-gray-400 shrink-0 w-16">운영시간</dt>
-              <dd className="text-gray-700">평일 09:00 ~ 18:00</dd>
-            </div>
+            {/*<div className="flex gap-3">*/}
+            {/*  <dt className="text-gray-400 shrink-0 w-16">운영시간</dt>*/}
+            {/*  <dd className="text-gray-700">평일 09:00 ~ 18:00</dd>*/}
+            {/*</div>*/}
           </dl>
         </div>
 
@@ -91,14 +92,8 @@ export default function DirectionsPage() {
             <div className="flex gap-3">
               <dt className="text-gray-400 shrink-0 w-16">지하철</dt>
               <dd className="text-gray-700">
-                2호선 강남역 4번 출구 도보 5분
-                <br />
-                신분당선 강남역 6번 출구 도보 7분
+                인천 1호선 아라역 8번 출구 도보 1분
               </dd>
-            </div>
-            <div className="flex gap-3">
-              <dt className="text-gray-400 shrink-0 w-16">버스</dt>
-              <dd className="text-gray-700">강남역 정류장 하차 후 도보 5분</dd>
             </div>
           </dl>
         </div>

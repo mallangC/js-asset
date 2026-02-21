@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import LogoutButton from "./LogoutButton";
+import { COMPANY } from "@/lib/company";
 
 export default async function Header() {
   const supabase = await createClient();
@@ -12,6 +13,8 @@ export default async function Header() {
     { href: "/company", label: "회사소개" },
     { href: "/directions", label: "오시는 길" },
     { href: "/notices", label: "공지사항" },
+    { href: "/customer", label: "고객센터" },
+    { href: "/bond-notices", label: "채권양도 예정공지" },
   ];
 
   return (
@@ -19,7 +22,7 @@ export default async function Header() {
       <div className="max-w-6xl mx-auto px-6 h-16 relative flex items-center">
         {/* 로고 - 왼쪽 */}
         <Link href="/" className="text-lg font-semibold tracking-tight text-gray-900">
-          에스제이에셋대부<span className="text-gray-400 font-normal text-sm ml-1">(주)</span>
+          {COMPANY.nameShort}<span className="text-gray-400 font-normal text-sm ml-1">{COMPANY.nameParenthesis}</span>
         </Link>
 
         {/* 네비게이션 - 절대 중앙 */}
