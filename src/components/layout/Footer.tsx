@@ -19,9 +19,6 @@ export default function Footer() {
           <p className="text-xs text-gray-400 text-center">
             © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
           </p>
-          <p className="text-xs text-gray-400 text-center mt-1">
-            대부업은 고금리이므로 신중하게 이용하시기 바랍니다.
-          </p>
         </div>
       </div>
     </footer>
