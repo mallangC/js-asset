@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section className="relative h-140 flex items-center justify-center overflow-hidden bg-gray-900">
       {/* 배경 이미지 */}
       <Image
-        src="/hero.png"
+        src="/hero.jpg"
         alt="회의하는 사람들"
         fill
         priority
