@@ -22,9 +22,6 @@ export default function HeroSection() {
         <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight">
           {COMPANY.name}
         </h1>
-        <p className="mt-6 text-gray-300 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-          신뢰와 전문성을 바탕으로 고객의 자산을 지켜드립니다.
-        </p>
       </div>
     </section>
   );
