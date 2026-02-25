@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const BUCKET = "bond-notices";
+const BUCKET = "debt-adjustment";
 
 async function requireAuth() {
   const supabase = await createClient();
@@ -24,7 +24,7 @@ async function uploadFile(supabase: Awaited<ReturnType<typeof requireAuth>>, fil
     .upload(fileName, file, { contentType, upsert: false });
 
   if (error) {
-    console.error(`[bond-notices] storage upload error:`, error.message, error);
+    console.error(`[debt-adjustment] storage upload error:`, error.message, error);
     throw new Error(`파일 업로드에 실패했습니다: ${error.message}`);
   }
 
@@ -41,58 +41,58 @@ async function removeStorageFile(supabase: Awaited<ReturnType<typeof requireAuth
   }
 }
 
-export async function createBondNotice(formData: FormData) {
+export async function createDebtAdjustmentNotice(formData: FormData) {
   const supabase = await requireAuth();
 
   const title = formData.get("title") as string;
   const imageFile = formData.get("image_file") as File | null;
-  const pdfFile = formData.get("pdf_file") as File | null;
+  const hwpFile = formData.get("hwp_file") as File | null;
 
   if (!title?.trim()) {
     throw new Error("제목을 입력해주세요.");
   }
 
   let image_path: string | null = null;
-  let pdf_path: string | null = null;
+  let hwp_path: string | null = null;
 
   if (imageFile && imageFile.size > 0) {
     image_path = await uploadFile(supabase, imageFile, imageFile.type || "image/png");
   }
 
-  if (pdfFile && pdfFile.size > 0) {
-    pdf_path = await uploadFile(supabase, pdfFile, "application/pdf");
+  if (hwpFile && hwpFile.size > 0) {
+    hwp_path = await uploadFile(supabase, hwpFile, "application/x-hwp");
   }
 
-  const { error } = await supabase.from("bond_notices").insert({
+  const { error } = await supabase.from("debt_adjustment_notices").insert({
     title: title.trim(),
     image_path,
-    pdf_path,
+    hwp_path,
   });
 
   if (error) {
-    console.error("[bond-notices] DB insert error:", error.message, error.details, error.hint, error.code);
-    throw new Error(`채권양도 예정공지 등록 실패: ${error.message}`);
+    console.error("[debt-adjustment] DB insert error:", error.message, error.details, error.hint, error.code);
+    throw new Error(`채무조정 지원제도 안내 등록 실패: ${error.message}`);
   }
 
-  revalidatePath("/bond-notices");
-  redirect("/bond-notices");
+  revalidatePath("/debt-adjustment");
+  redirect("/debt-adjustment");
 }
 
-export async function deleteBondNotice(id: number) {
+export async function deleteDebtAdjustmentNotice(id: number) {
   const supabase = await requireAuth();
 
   const { data: notice } = await supabase
-    .from("bond_notices")
-    .select("image_path, pdf_path")
+    .from("debt_adjustment_notices")
+    .select("image_path, hwp_path")
     .eq("id", id)
     .single();
 
   await removeStorageFile(supabase, notice?.image_path ?? null);
-  await removeStorageFile(supabase, notice?.pdf_path ?? null);
+  await removeStorageFile(supabase, notice?.hwp_path ?? null);
 
-  const { error } = await supabase.from("bond_notices").delete().eq("id", id);
-  if (error) throw new Error("채권양도 예정공지 삭제에 실패했습니다.");
+  const { error } = await supabase.from("debt_adjustment_notices").delete().eq("id", id);
+  if (error) throw new Error("채무조정 지원제도 안내 삭제에 실패했습니다.");
 
-  revalidatePath("/bond-notices");
-  redirect("/bond-notices");
+  revalidatePath("/debt-adjustment");
+  redirect("/debt-adjustment");
 }

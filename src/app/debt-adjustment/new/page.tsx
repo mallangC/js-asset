@@ -1,13 +1,13 @@
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
-import { createBondNotice } from "@/app/actions/bond-notices";
+import { createDebtAdjustmentNotice } from "@/app/actions/debt-adjustment";
 
 export const metadata: Metadata = {
-  title: "채권양도 예정공지 등록 | 에스제이에셋대부(주)",
+  title: "채무조정 지원제도 안내 등록 | 에스제이에셋대부(주)",
 };
 
-export default async function NewBondNoticePage() {
+export default async function NewDebtAdjustmentPage() {
   const supabase = await createClient();
   const {
     data: { user },
@@ -19,11 +19,11 @@ export default async function NewBondNoticePage() {
     <div className="max-w-3xl mx-auto px-6 py-16">
       <div className="mb-10">
         <p className="text-xs text-gray-400 tracking-widest uppercase mb-2">Admin</p>
-        <h1 className="text-2xl font-bold text-gray-900">채권양도 예정공지 등록</h1>
+        <h1 className="text-2xl font-bold text-gray-900">채무조정 지원제도 안내 등록</h1>
         <div className="mt-4 h-px w-12 bg-gray-900" />
       </div>
 
-      <form action={createBondNotice} className="space-y-6">
+      <form action={createDebtAdjustmentNotice} className="space-y-6">
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
             제목 <span className="text-red-500">*</span>
@@ -33,7 +33,7 @@ export default async function NewBondNoticePage() {
             name="title"
             type="text"
             required
-            placeholder="예: 2024년 1월 채권양도 예정공지"
+            placeholder="예: 채무조정 지원제도 안내"
             className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-gray-400 transition-colors"
           />
         </div>
@@ -50,29 +50,29 @@ export default async function NewBondNoticePage() {
             className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-gray-400 transition-colors file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
           />
           <p className="mt-1 text-xs text-gray-400">
-            공지 내용 이미지를 선택하면 스토리지에 업로드됩니다.
+            안내 내용 이미지를 선택하면 스토리지에 업로드됩니다.
           </p>
         </div>
 
         <div>
-          <label htmlFor="pdf_file" className="block text-sm font-medium text-gray-700 mb-2">
-            PDF 파일 <span className="text-gray-400 font-normal">(선택)</span>
+          <label htmlFor="hwp_file" className="block text-sm font-medium text-gray-700 mb-2">
+            HWP 파일 <span className="text-gray-400 font-normal">(선택)</span>
           </label>
           <input
-            id="pdf_file"
-            name="pdf_file"
+            id="hwp_file"
+            name="hwp_file"
             type="file"
-            accept=".pdf,application/pdf"
+            accept=".hwp,.hwpx"
             className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-gray-400 transition-colors file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
           />
           <p className="mt-1 text-xs text-gray-400">
-            PDF를 선택하면 스토리지에 업로드됩니다.
+            HWP 파일을 선택하면 스토리지에 업로드됩니다.
           </p>
         </div>
 
         <div className="flex gap-3 justify-end pt-2">
           <a
-            href="/bond-notices"
+            href="/debt-adjustment"
             className="px-5 py-2 text-sm text-gray-600 border border-gray-200 rounded hover:bg-gray-50 transition-colors"
           >
             취소
