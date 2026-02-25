@@ -4,9 +4,16 @@ import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import DebtAdjustmentAdminActions from "@/components/debt-adjustment/DebtAdjustmentAdminActions";
 
-export const metadata: Metadata = {
-  title: "채무조정 지원제도 안내 | 에스제이에셋대부(주)",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const supabase = await createClient();
+  const { data } = await supabase.from("debt_adjustment_notices").select("id").limit(1);
+  const hasContent = (data ?? []).length > 0;
+
+  return {
+    title: "채무조정 지원제도 안내 | 에스제이에셋대부(주)",
+    robots: hasContent ? undefined : { index: false, follow: false },
+  };
+}
 
 export default async function DebtAdjustmentPage() {
   const supabase = await createClient();

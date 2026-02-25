@@ -4,9 +4,16 @@ import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import BondNoticeAdminActions from "@/components/bond-notices/BondNoticeAdminActions";
 
-export const metadata: Metadata = {
-  title: "채권양도 예정공지 | 에스제이에셋대부(주)",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const supabase = await createClient();
+  const { data } = await supabase.from("bond_notices").select("id").limit(1);
+  const hasContent = (data ?? []).length > 0;
+
+  return {
+    title: "채권양도 예정공지 | 에스제이에셋대부(주)",
+    robots: hasContent ? undefined : { index: false, follow: false },
+  };
+}
 
 export default async function BondNoticesPage() {
   const supabase = await createClient();
