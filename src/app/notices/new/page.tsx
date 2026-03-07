@@ -5,7 +5,7 @@ import NoticeForm from "@/components/notices/NoticeForm";
 import { createNotice } from "@/app/actions/notices";
 
 export const metadata: Metadata = {
-  title: "공지사항 작성 | 에스제이에셋대부(주)",
+  title: "공지사항 작성",
 };
 
 export default async function NewNoticePage() {

@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import LoginForm from "@/components/admin/LoginForm";
 
 export const metadata: Metadata = {
-  title: "관리자 로그인 | 에스제이에셋대부(주)",
+  title: "관리자 로그인",
 };
 
 export default async function AdminPage() {

@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createFaq } from "@/app/actions/faqs";
 
 export const metadata: Metadata = {
-  title: "FAQ 추가 | 에스제이에셋대부(주)",
+  title: "FAQ 추가",
 };
 
 export default async function NewFaqPage() {

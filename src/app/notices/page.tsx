@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
-  title: "공지사항 | 에스제이에셋대부(주)",
+  title: "공지사항",
 };
 
 export default async function NoticesPage() {

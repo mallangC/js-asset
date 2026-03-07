@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createBondNotice } from "@/app/actions/bond-notices";
 
 export const metadata: Metadata = {
-  title: "채권양도 예정공지 등록 | 에스제이에셋대부(주)",
+  title: "채권양도 예정공지 등록",
 };
 
 export default async function NewBondNoticePage() {

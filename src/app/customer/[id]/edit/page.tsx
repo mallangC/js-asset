@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: "FAQ 수정 | 에스제이에셋대부(주)",
+  title: "FAQ 수정",
 };
 
 export default async function EditFaqPage({ params }: Props) {

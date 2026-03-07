@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = await createClient();
   const { data } = await supabase.from("notices").select("title").eq("id", id).single();
   return {
-    title: data ? `${data.title} | 에스제이에셋대부(주)` : "공지사항",
+    title: data ? data.title : "공지사항",
   };
 }
 

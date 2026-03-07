@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const hasContent = (data ?? []).length > 0;
 
   return {
-    title: "채권양도 예정공지 | 에스제이에셋대부(주)",
+    title: "채권양도 예정공지",
     robots: hasContent ? undefined : { index: false, follow: false },
   };
 }

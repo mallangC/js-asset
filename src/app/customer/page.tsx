@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import FaqAccordion from "@/components/customer/FaqAccordion";
 
 export const metadata: Metadata = {
-  title: "고객센터 | 에스제이에셋대부(주)",
+  title: "고객센터",
 };
 
 export default async function CustomerPage() {

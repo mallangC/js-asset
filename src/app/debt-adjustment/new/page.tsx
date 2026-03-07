@@ -4,7 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { createDebtAdjustmentNotice } from "@/app/actions/debt-adjustment";
 
 export const metadata: Metadata = {
-  title: "채무조정 지원제도 안내 등록 | 에스제이에셋대부(주)",
+  title: "채무조정 지원제도 안내 등록",
 };
 
 export default async function NewDebtAdjustmentPage() {

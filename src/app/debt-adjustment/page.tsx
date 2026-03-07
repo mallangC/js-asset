@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const hasContent = (data ?? []).length > 0;
 
   return {
-    title: "채무조정 지원제도 안내 | 에스제이에셋대부(주)",
+    title: "채무조정 지원제도 안내",
     robots: hasContent ? undefined : { index: false, follow: false },
   };
 }

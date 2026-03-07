@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: `회사소개 | ${COMPANY.name}`,
+  title: "회사소개",
 };
 
 const items = [
