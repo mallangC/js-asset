@@ -45,19 +45,13 @@ export async function createBondNotice(formData: FormData) {
   const supabase = await requireAuth();
 
   const title = formData.get("title") as string;
-  const imageFile = formData.get("image_file") as File | null;
   const pdfFile = formData.get("pdf_file") as File | null;
 
   if (!title?.trim()) {
     throw new Error("제목을 입력해주세요.");
   }
 
-  let image_path: string | null = null;
   let pdf_path: string | null = null;
-
-  if (imageFile && imageFile.size > 0) {
-    image_path = await uploadFile(supabase, imageFile, imageFile.type || "image/png");
-  }
 
   if (pdfFile && pdfFile.size > 0) {
     pdf_path = await uploadFile(supabase, pdfFile, "application/pdf");
@@ -65,7 +59,6 @@ export async function createBondNotice(formData: FormData) {
 
   const { error } = await supabase.from("bond_notices").insert({
     title: title.trim(),
-    image_path,
     pdf_path,
   });
 
@@ -83,11 +76,10 @@ export async function deleteBondNotice(id: number) {
 
   const { data: notice } = await supabase
     .from("bond_notices")
-    .select("image_path, pdf_path")
+    .select("pdf_path")
     .eq("id", id)
     .single();
 
-  await removeStorageFile(supabase, notice?.image_path ?? null);
   await removeStorageFile(supabase, notice?.pdf_path ?? null);
 
   const { error } = await supabase.from("bond_notices").delete().eq("id", id);

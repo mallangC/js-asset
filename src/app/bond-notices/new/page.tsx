@@ -39,22 +39,6 @@ export default async function NewBondNoticePage() {
         </div>
 
         <div>
-          <label htmlFor="image_file" className="block text-sm font-medium text-gray-700 mb-2">
-            이미지 파일 <span className="text-gray-400 font-normal">(선택)</span>
-          </label>
-          <input
-            id="image_file"
-            name="image_file"
-            type="file"
-            accept="image/*"
-            className="w-full px-4 py-2.5 border border-gray-200 rounded text-sm outline-none focus:border-gray-400 transition-colors file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200"
-          />
-          <p className="mt-1 text-xs text-gray-400">
-            공지 내용 이미지를 선택하면 스토리지에 업로드됩니다.
-          </p>
-        </div>
-
-        <div>
           <label htmlFor="pdf_file" className="block text-sm font-medium text-gray-700 mb-2">
             PDF 파일 <span className="text-gray-400 font-normal">(선택)</span>
           </label>
