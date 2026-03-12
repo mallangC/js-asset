@@ -19,7 +19,10 @@ export default function PdfViewer({ url }: Props) {
   }, []);
 
   return (
-    <div className="w-full border border-gray-100 rounded-lg overflow-auto bg-gray-50">
+    <div
+      className="w-full border border-gray-100 rounded-lg overflow-auto bg-gray-50"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <Document
         file={url}
         onLoadSuccess={onLoadSuccess}
